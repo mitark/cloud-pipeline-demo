@@ -11,6 +11,14 @@ jobs:
     environment: credentials
 
     steps:
+    - name: Debug secrets
+       run: |
+         echo "Service ID length: ${#SERVICE_ID}"
+         echo "API Key length: ${#API_KEY}"
+       env:
+         SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+         API_KEY: ${{ secrets.RENDER_API_KEY }}
+
     - name: Checkout latest version
       uses: actions/checkout@v6
 
