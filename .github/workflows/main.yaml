@@ -1,9 +1,9 @@
-name: Release Node.js App
+name: Release to Render
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
