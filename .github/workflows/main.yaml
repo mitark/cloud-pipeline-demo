@@ -38,8 +38,10 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/cloud-pipeline-demo:latest
 
-    - name: Render Deploy
-      uses: JorgeLNJunior/render-deploy@v1.5.0
+    - name: Deploy to Render
+      uses: gh-actions-workflows/deploy-docker-render@v1.1
       with:
-        service_id: ${{ secrets.RENDER_SERVICE_ID }}
-        api_key: ${{ secrets.RENDER_API_KEY }}
+        deploy-hook: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        image-url: mitark/cloud-pipeline-demo:latest
+        render-api-key: ${{ secrets.RENDER_API_KEY }}
+        wait-for-deployment: true
